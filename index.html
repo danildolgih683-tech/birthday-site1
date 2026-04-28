@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>С днём рождения ATC</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a002b, #000);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+    margin-top: 15%;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+    animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    100% { opacity: 0.85; }
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff00cc;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #ff00cc;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(0,0,0,0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #ff00ff;
+    transition: 0.5s;
+}
+
+.popup.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 С днём рождения ATC братик 🎉</h1>
+
+<button onclick="startParty()">НАЖМИ 🎶</button>
+
+<div class="popup" id="popup">
+    <h2>🔥 Скромный подарок от нескромных АТС братьев 🔥</h2>
+    <p>Почта: dimkamalenkayapipka@gmail.com
+Пароль: Dimon777ATC
+
+Аккаунт ПС5: 
+dimkamalenkayapipka@gmail.com
+Пароль: DimON797ATC!</p>
+</div>
+
+<audio id="music" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startParty() {
+    const music = document.getElementById("music");
+    music.play();
+
+    document.getElementById("popup").classList.add("active");
+
+    for (let i = 0; i < 120; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        confetti.style.backgroundColor =
+            "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        document.body.appendChild(confetti);
+    }
+}
+</script>
+
+</body>
+</html>
